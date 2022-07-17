@@ -1,0 +1,88 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      
+    </div>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header bg-transparent">
+          <h3 class="mb-0">Predict</h3>
+        </div>
+        <div class="card-body">
+          <div class="row icon-examples">
+            <div class="col-lg-12 col-md-6">
+              <button (click)="onClickPredict()" class="btn-touch" *ngIf="show_btn">Touch me</button>
+
+              <div *ngIf="status_show">
+                <h1 style="color: crimson;">Lenght of File list: {{this.len_file_list}}</h1>
+                <h1 style="color: darkblue;">Lenght of Shell list: {{this.len_shell_list}}</h1>
+                <h1 style="color: darkgreen;">Lenght of Yara list: {{this.len_yara_list}}</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=" row" *ngIf="status_show">
+    <div class=" col-md-12">
+      <div class=" card hover-animate card1">
+        <div class=" card-header" style="background-color: deepskyblue;">
+          <h4 class=" card-title" style="color: #6a193f;font-size: 20px; font-weight: 600;">Shell file</h4>
+        </div>
+        <div class=" card-body">
+          <div class=" table-responsive">
+            <table class=" table tablesorter" id="">
+              <thead class=" text-primary">
+                <tr>
+                  <th>File Name</th>
+                  <th class=" text-center">Malicious Chance</th>
+                  <th class=" text-center">malicious_judge</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of this.shell_list">
+                  <td style="white-space: nowrap; overflow: hidden;">{{item.file_name}}</td>
+                  <td style="white-space: nowrap; overflow: hidden;">{{item.malicious_chance}}</td>
+                  <td style="white-space: nowrap; overflow: hidden;">{{item.malicious_judge}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=" col-md-12">
+      <div class=" card card-plain hover-animate card2">
+        <div class=" card-header" style="background-color: goldenrod;">
+          <h4 class=" card-title" style="color: #6a193f;font-size: 20px; font-weight: 600;">Yara file</h4>
+        </div>
+        <div class=" card-body">
+          <div class=" table-responsive">
+            <table class=" table tablesorter" id="">
+              <thead class=" text-primary">
+                <tr>
+                  <th>File Name</th>
+                  <th class=" text-center">Yara Result</th>
+                  <th class=" text-center">Yara Strings</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of this.yara_list">
+                  <td style="white-space: nowrap; overflow: hidden;">{{item.filename}}</td>
+                  <td style="white-space: nowrap; overflow: hidden;">{{item.yararesults}}</td>
+                  <td style="white-space: nowrap; overflow: hidden;">{{item.yarastrings}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
